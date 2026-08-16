@@ -19,6 +19,7 @@ DATA_DIR = ROOT / "data"
 FIXTURE_DIR = DATA_DIR / "fixtures"
 POLICY_DIR = DATA_DIR / "policy"
 IMPORT_DIR = Path(os.getenv("BIOMNI_IMPORT_DIR", str(DATA_DIR / "imports")))
+CACHE_DIR = Path(os.getenv("BIOFORGE_CACHE_DIR", str(DATA_DIR / "cache")))
 
 
 def _int(name: str, default: int) -> int:
@@ -29,6 +30,23 @@ def _int(name: str, default: int) -> int:
         return int(raw)
     except ValueError:
         return default
+
+
+def _float(name: str, default: float) -> float:
+    raw = os.getenv(name)
+    if raw is None or raw.strip() == "":
+        return default
+    try:
+        return float(raw)
+    except ValueError:
+        return default
+
+
+def _bool(name: str, default: bool) -> bool:
+    raw = os.getenv(name)
+    if raw is None or raw.strip() == "":
+        return default
+    return raw.strip().lower() in {"1", "true", "yes", "on"}
 
 
 @dataclass
@@ -48,8 +66,16 @@ class Settings:
         default_factory=lambda: os.getenv("ANTHROPIC_MODEL", "claude-opus-5") or "claude-opus-5"
     )
 
+    # Paperclip integrates through its official CLI, not an HTTP endpoint.
+    # PAPERCLIP_API_KEY is only needed for non-interactive auth; if the operator
+    # has already run `paperclip login`, the adapter uses that session.
     paperclip_api_key: str = field(default_factory=lambda: os.getenv("PAPERCLIP_API_KEY", ""))
-    paperclip_api_url: str = field(default_factory=lambda: os.getenv("PAPERCLIP_API_URL", ""))
+    paperclip_bin: str = field(default_factory=lambda: os.getenv("PAPERCLIP_BIN", ""))
+    paperclip_timeout_s: float = field(default_factory=lambda: _float("PAPERCLIP_TIMEOUT_S", 90.0))
+    paperclip_max_results: int = field(default_factory=lambda: _int("PAPERCLIP_MAX_RESULTS", 6))
+    paperclip_cache_ttl_s: int = field(default_factory=lambda: _int("PAPERCLIP_CACHE_TTL_S", 86400))
+    #: Set to false to force fixture evidence even with the CLI installed.
+    paperclip_enabled: bool = field(default_factory=lambda: _bool("PAPERCLIP_ENABLED", True))
 
     tamarind_api_key: str = field(default_factory=lambda: os.getenv("TAMARIND_API_KEY", ""))
     tamarind_api_url: str = field(default_factory=lambda: os.getenv("TAMARIND_API_URL", ""))
@@ -69,6 +95,7 @@ class Settings:
     def __post_init__(self) -> None:
         self.artifact_dir.mkdir(parents=True, exist_ok=True)
         IMPORT_DIR.mkdir(parents=True, exist_ok=True)
+        CACHE_DIR.mkdir(parents=True, exist_ok=True)
 
 
 settings = Settings()

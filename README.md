@@ -142,7 +142,7 @@ All seven implement the same adapter interface: `live`, `fixture`, or
 | Integration | Role | Live path | Enable with |
 |---|---|---|---|
 | **Anthropic Claude** | Evidence synthesis, hypothesis updates, decision rationales — **prose only** | Official `anthropic` SDK, structured outputs, adaptive thinking | `pip install anthropic` + `ANTHROPIC_API_KEY` |
-| **Paperclip** | Literature, FDA, trials, UniProt, PDB | HTTP to an operator-supplied endpoint | `PAPERCLIP_API_URL` + `PAPERCLIP_API_KEY` |
+| **Paperclip** | Literature, FDA, trials, UniProt, PDB | Official `paperclip` CLI (`search`, `results`, protein VFS) | Install CLI + `paperclip login` (or `PAPERCLIP_API_KEY`) |
 | **Biomni** | Target biology, homologs, isoforms | **Import handoff** — emits a task prompt, parses the export | `POST /api/investigations/{id}/import/biomni` |
 | **Tamarind Bio** | Candidate design, structure, developability | HTTP to an operator-supplied endpoint | `TAMARIND_API_URL` + `TAMARIND_API_KEY` |
 | **Benchling Model Hub** | Independent structure check (gate 2) | HTTP, with a same-family independence check | `BENCHLING_MODEL_HUB_URL` + `BENCHLING_API_KEY` |
@@ -152,9 +152,12 @@ All seven implement the same adapter interface: `live`, `fixture`, or
 Two deliberate limits, because inventing an API is worse than admitting you don't
 have one:
 
-- **No vendor base URL is hard-coded** for Paperclip or Tamarind, and no request
-  schema is guessed. Supply the endpoint your team was issued and provenance
-  reads *operator-configured endpoint*.
+- **Paperclip uses the official CLI**, not an invented HTTP endpoint. Install
+  the binary, sign in once, and the adapter probes at startup and reports `live`
+  only when authenticated and reachable.
+- **No vendor base URL is hard-coded for Tamarind**, and no request schema is
+  guessed. Supply the endpoint your team was issued and provenance reads
+  *operator-configured endpoint*.
 - **The Benchling live write stops short of a guessed schema.** Registering a
   sequence needs the tenant's own registry and schema IDs. The adapter connects,
   then raises with the exact file and function to complete; the prepared records
@@ -174,7 +177,7 @@ make demo-headless     # full run, no server, writes artifacts
 make dev               # API + Vite with hot reload (two ports)
 make benchmark         # blinded benchmark + ablations
 
-make test              # 131 tests, ~2.5s
+make test              # 160+ tests, ~10s
 make check             # lint + typecheck + test + production build
 make fixtures          # regenerate fixtures (verifies the demo narrative)
 ```

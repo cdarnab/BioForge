@@ -24,11 +24,11 @@ def settings(tmp_path) -> Settings:
     s.demo_pace_ms = 0
     s.artifact_dir = tmp_path / "artifacts"
     s.artifact_dir.mkdir(parents=True, exist_ok=True)
-    # Guarantee fixture mode regardless of the developer's environment.
+    # Guarantee fixture mode regardless of the developer's environment. Tests
+    # must never reach a network or a locally installed CLI.
     for field in (
         "anthropic_api_key",
         "paperclip_api_key",
-        "paperclip_api_url",
         "tamarind_api_key",
         "tamarind_api_url",
         "benchling_tenant",
@@ -38,6 +38,11 @@ def settings(tmp_path) -> Settings:
         "modal_validator_url",
     ):
         setattr(s, field, "")
+    # Paperclip is a real CLI that may well be installed on the developer's
+    # machine; disable it explicitly rather than relying on it being absent.
+    s.paperclip_enabled = False
+    s.paperclip_bin = str(tmp_path / "no-such-paperclip")
+    s.paperclip_cache_ttl_s = 0
     return s
 
 

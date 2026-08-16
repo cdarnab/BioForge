@@ -116,21 +116,38 @@ def _spawn(run_id: str, coro_factory) -> None:
 # --------------------------------------------------------------------------
 
 
+@app.on_event("startup")
+async def probe_integrations() -> None:
+    """Check which adapters can really reach their service, once, at boot.
+
+    Doing this at startup means the very first page load already shows accurate
+    modes instead of optimistically reporting everything as fixture.
+    """
+    try:
+        statuses = await registry.refresh_statuses()
+        live = [s.name for s in statuses if s.mode.value == "live"]
+        log.info("integration probe complete; live: %s", ", ".join(live) or "none")
+    except Exception:  # a probe must never stop the app from booting
+        log.exception("integration probe failed")
+
+
 @app.get("/api/health")
 async def health() -> dict[str, Any]:
+    statuses = registry.statuses()
     return {
         "status": "ok",
         "app_mode": settings.app_mode,
         "policy_version": runner.policy.version,
         "seed": settings.random_seed,
-        "integrations": [s.model_dump(mode="json") for s in registry.statuses()],
-        "any_live": any(s.mode.value == "live" for s in registry.statuses()),
+        "integrations": [s.model_dump(mode="json") for s in statuses],
+        "any_live": any(s.mode.value == "live" for s in statuses),
     }
 
 
 @app.get("/api/integrations")
-async def integrations() -> list[dict[str, Any]]:
-    return [s.model_dump(mode="json") for s in registry.statuses()]
+async def integrations(refresh: bool = False) -> list[dict[str, Any]]:
+    statuses = await registry.refresh_statuses() if refresh else registry.statuses()
+    return [s.model_dump(mode="json") for s in statuses]
 
 
 @app.get("/api/policy")

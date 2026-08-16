@@ -1,0 +1,204 @@
+# DEMONSTRATION THRESHOLDS.
+#
+# Every number in this file is a hackathon demonstration threshold unless the
+# `source` field cites a specific paper or an internal validated dataset. None
+# of them currently do. They were chosen to produce an interpretable triage on
+# the seeded VEGF-A fixture set, NOT because they are calibrated decision
+# boundaries for real programs.
+#
+# The whole point of keeping them here rather than in code is that a scientist
+# can change a number, re-run, and get a different, fully reproducible answer.
+
+version: "2026.08.15-demo-1"
+label: "Demonstration thresholds (uncalibrated)"
+
+gates:
+  binding:
+    order: 1
+    title: "Predicted binding"
+    required: true
+    max_failed_metrics: 0
+    description: >
+      Does the design path predict a productive interface with the selected
+      epitope? Failing here means the primary model does not believe the
+      candidate engages the target at all.
+    metrics:
+      - name: interface_confidence
+        label: "Interface confidence"
+        minimum: 0.65
+        direction: higher_is_better
+        unit: ""
+        source: null
+        note: "Design-path interface confidence, 0-1. Analogous to an ipTM-style score."
+      - name: predicted_dg_kcal_mol
+        label: "Predicted ΔG"
+        direction: informational
+        unit: "kcal/mol"
+        source: null
+        note: >
+          Reported for context only. No threshold is applied because absolute
+          predicted binding free energies are not reliable enough to gate on.
+
+  independent_structure:
+    order: 2
+    title: "Independent structural agreement"
+    required: true
+    max_failed_metrics: 0
+    description: >
+      Does a structure predictor from a DIFFERENT model family than the design
+      path agree about the pose? This gate exists to catch designs that are an
+      artifact of one model's biases. Agreement is not evidence of correctness —
+      two models can be wrong together.
+    metrics:
+      - name: model_agreement
+        label: "Primary/independent agreement"
+        minimum: 0.60
+        direction: higher_is_better
+        unit: ""
+        source: null
+        note: "Per-candidate agreement between the design model and Benchling Model Hub."
+      - name: epitope_rmsd_angstrom
+        label: "Epitope-contact RMSD"
+        maximum: 4.0
+        direction: lower_is_better
+        unit: "Å"
+        source: null
+        note: "Backbone RMSD over epitope-contacting residues between the two predictions."
+
+  developability:
+    order: 3
+    title: "Developability"
+    required: true
+    # A single flagged liability is tolerated; two or more is a fail. Real
+    # programs weigh these very differently by liability type.
+    max_failed_metrics: 1
+    description: >
+      Would this molecule survive manufacturing and formulation? Mixes exact
+      sequence arithmetic with heuristic summaries and two model predictions;
+      each metric shows which kind it is.
+    metrics:
+      - name: surface_hydrophobicity
+        label: "Surface hydrophobicity (CDR)"
+        maximum: 0.45
+        direction: lower_is_better
+        unit: ""
+        source: null
+        note: "Heuristic. Mean normalised Kyte-Doolittle hydropathy over CDR residues."
+      - name: aggregation_propensity
+        label: "Aggregation propensity"
+        maximum: 0.30
+        direction: lower_is_better
+        unit: ""
+        source: null
+        note: "Heuristic. Strongest 5-residue hydrophobic patch across the CDRs."
+      - name: net_charge_at_ph7
+        label: "Net charge at pH 7"
+        minimum: -2.0
+        maximum: 6.0
+        direction: in_range
+        unit: "e"
+        source: null
+        note: "Exact arithmetic from the sequence with a simple pKa model."
+      - name: unpaired_cysteines
+        label: "Unpaired cysteines"
+        maximum: 0.0
+        direction: lower_is_better
+        unit: "count"
+        source: null
+        note: "Exact. Cysteines beyond the conserved VHH disulfide pair."
+      - name: n_glyc_sequons
+        label: "N-glycosylation sequons"
+        maximum: 1.0
+        direction: lower_is_better
+        unit: "count"
+        source: null
+        note: "Exact. N-X-S/T motifs where X is not proline."
+      - name: predicted_tm_celsius
+        label: "Predicted Tm"
+        minimum: 60.0
+        direction: higher_is_better
+        unit: "°C"
+        source: null
+        note: "Model prediction from the design path. Not a measured melting temperature."
+      - name: immunogenicity_risk
+        label: "Immunogenicity risk"
+        maximum: 0.35
+        direction: lower_is_better
+        unit: ""
+        source: null
+        note: "Model prediction, 0-1. Sequence-liability style score, not a clinical estimate."
+
+  robustness:
+    order: 4
+    title: "Mutation robustness and negative-control challenge"
+    required: true
+    max_failed_metrics: 0
+    description: >
+      The adversarial gate. Runs an alanine scan across epitope-contacting
+      positions and scores the candidate against decoy antigens. A candidate
+      that scores as well against decoys as against the real target has learned
+      something other than the epitope.
+    metrics:
+      - name: retained_score_across_mutations
+        label: "Score retained under mutation"
+        minimum: 0.55
+        direction: higher_is_better
+        unit: ""
+        source: null
+        note: "Fraction of interface confidence retained across the alanine scan."
+      - name: decoy_discrimination_margin
+        label: "Decoy discrimination margin"
+        minimum: 0.15
+        direction: higher_is_better
+        unit: ""
+        source: null
+        note: "Interface confidence on target minus best confidence on any decoy antigen."
+
+# Transparent ranking used only to order candidates that already passed every
+# gate. It is arithmetic over stored raw metrics — no model is asked to produce
+# an aggregate score. Contributions are min-max normalised against the bounds
+# below and combined with these weights.
+ranking:
+  description: >
+    Weighted sum of normalised raw metrics. Shown with its inputs everywhere it
+    appears. Used for ordering the shortlist only; it never causes a pass or a
+    fail, and re-running it from the stored metrics must reproduce it exactly.
+  components:
+    - metric: interface_confidence
+      weight: 0.35
+      direction: higher_is_better
+      floor: 0.50
+      ceiling: 0.95
+    - metric: model_agreement
+      weight: 0.25
+      direction: higher_is_better
+      floor: 0.50
+      ceiling: 0.95
+    - metric: retained_score_across_mutations
+      weight: 0.20
+      direction: higher_is_better
+      floor: 0.40
+      ceiling: 0.95
+    - metric: decoy_discrimination_margin
+      weight: 0.10
+      direction: higher_is_better
+      floor: 0.00
+      ceiling: 0.50
+    - metric: aggregation_propensity
+      weight: 0.10
+      direction: lower_is_better
+      floor: 0.00
+      ceiling: 0.60
+
+# Which reason codes the decision engine may emit. Keeping this closed makes
+# rejection reasons greppable and testable.
+reason_codes:
+  BIND_LOW_CONFIDENCE: "Predicted interface confidence below the acceptance threshold"
+  STRUCT_DISAGREEMENT: "Independent structure model disagrees with the design path"
+  STRUCT_POSE_SHIFT: "Epitope-contact RMSD between models exceeds the threshold"
+  DEV_MULTIPLE_LIABILITIES: "More than one developability liability flagged"
+  ROBUST_MUTATION_FRAGILE: "Interface collapses under the alanine scan"
+  ROBUST_DECOY_BINDING: "Scores comparably against decoy antigens"
+  ADVANCED_ALL_GATES: "Passed every configured gate"
+  NOT_SHORTLISTED: "Passed every gate but ranked below the finalist cutoff"
+  REDESIGN_NEAR_MISS: "Failed one gate narrowly and was selected for redesign"

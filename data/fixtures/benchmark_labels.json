@@ -1,0 +1,17 @@
+{
+  "description": "Ground-truth control roles. The scoring pipeline never reads this file; only tools/benchmark joins it back in after candidates have been scored. tests/unit/test_blinding.py enforces that.",
+  "labels": {
+    "BF-001": "positive_control",
+    "BF-014": "unrelated_binder_negative",
+    "BF-015": "shuffled_cdr_negative",
+    "BF-016": "interface_disrupting_mutant"
+  },
+  "expected_positive": [
+    "BF-001"
+  ],
+  "expected_negative": [
+    "BF-014",
+    "BF-015",
+    "BF-016"
+  ]
+}

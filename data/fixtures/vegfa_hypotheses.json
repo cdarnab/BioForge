@@ -1,0 +1,78 @@
+{
+  "_note": "Falsifiable design hypotheses for the seeded VEGF-A run. Each states what result would kill it. In live mode Claude re-words the statement and updates posterior confidence from the gate outcomes; the falsification criteria and planned tests stay under the engine's control so the model cannot quietly move the goalposts.",
+  "items": [
+    {
+      "statement": "A VHH binder directed at the VEGF-A receptor-binding pole will block VEGFR-2 engagement while remaining developable as a single domain.",
+      "falsification_criteria": [
+        "Fewer than one candidate clears the binding and independent-structure gates together.",
+        "Every candidate that clears binding carries two or more developability liabilities, indicating the epitope forces an undevelopable paratope.",
+        "The independent structure model places the paratope away from the receptor-binding pole for all survivors."
+      ],
+      "supporting_evidence_claims": [
+        "The VEGFR-binding determinants sit at the two poles",
+        "A neutralising antibody Fab has been co-crystallised"
+      ],
+      "contradicting_evidence_claims": [
+        "VEGF family members PlGF, VEGF-B"
+      ],
+      "planned_tests": [
+        "Gate 1: predicted interface confidence against the selected epitope",
+        "Gate 2: independent structure agreement from a different model family",
+        "Gate 3: developability panel"
+      ],
+      "prior_confidence": 0.55
+    },
+    {
+      "statement": "Candidates that pass the design model's own binding gate will disagree with an independent structure predictor at a rate high enough to justify the second gate.",
+      "falsification_criteria": [
+        "Zero candidates are rejected at the independent-structure gate, which would mean the gate adds no information over the design path.",
+        "Primary and independent model agreement exceeds 0.9 for every candidate."
+      ],
+      "supporting_evidence_claims": [
+        "Public co-structures of VEGF-A with both a receptor domain"
+      ],
+      "contradicting_evidence_claims": [],
+      "planned_tests": [
+        "Gate 2 across all binding-gate survivors",
+        "Ablation: re-rank with the independent-structure gate removed"
+      ],
+      "prior_confidence": 0.6
+    },
+    {
+      "statement": "Adversarial challenge (alanine scan plus decoy antigens) will reject at least one candidate that passed all three prior gates, because high predicted affinity alone does not imply epitope-specific binding.",
+      "falsification_criteria": [
+        "Every candidate that reaches the challenge survives it.",
+        "Decoy discrimination margin exceeds the threshold for all candidates, meaning the decoy panel is not discriminating."
+      ],
+      "supporting_evidence_claims": [
+        "VEGF family members PlGF, VEGF-B"
+      ],
+      "contradicting_evidence_claims": [],
+      "planned_tests": [
+        "Gate 4: alanine scan across epitope-contact positions",
+        "Gate 4: decoy antigen panel scoring",
+        "Ablation: re-rank with the adversarial gate removed"
+      ],
+      "prior_confidence": 0.5
+    },
+    {
+      "statement": "A candidate rejected only for a hydrophobic-patch developability liability can be rescued by polar substitution at the CDR3 apex without losing the predicted interface.",
+      "falsification_criteria": [
+        "The redesign drops below the binding-gate threshold.",
+        "The redesign fails to reduce the aggregation-propensity heuristic.",
+        "The redesign improves every metric simultaneously, which would indicate the model is not being scored honestly."
+      ],
+      "supporting_evidence_claims": [
+        "The VEGF-A monomer carries an intrachain cystine knot"
+      ],
+      "contradicting_evidence_claims": [
+        "No experimental binding, expression, or stability data exists"
+      ],
+      "planned_tests": [
+        "Redesign the selected near-miss and re-run all four gates",
+        "Compare parent and child on every stored raw metric"
+      ],
+      "prior_confidence": 0.45
+    }
+  ]
+}

@@ -1,0 +1,135 @@
+@import "tailwindcss";
+
+/* Palette validated with the dataviz skill's checker against surface #12120f:
+   - categorical slots 1-4 (dark): all checks pass
+   - ordinal blue ramp for the gate funnel: all checks pass
+   Status colours are the reserved four and always ship with a text label,
+   never colour alone. */
+@theme {
+  --color-plane: #0b0b0a;
+  --color-surface: #131311;
+  --color-surface-2: #1b1b18;
+  --color-surface-3: #232320;
+
+  --color-ink: #ffffff;
+  --color-ink-2: #c3c2b7;
+  --color-ink-3: #898781;
+
+  --color-hair: #2c2c2a;
+  --color-rule: #383835;
+
+  --color-good: #0ca30c;
+  --color-warning: #fab219;
+  --color-serious: #ec835a;
+  --color-critical: #d03b3b;
+
+  --color-s1: #3987e5;
+  --color-s2: #d95926;
+  --color-s3: #199e70;
+  --color-s4: #c98500;
+  --color-s7: #9085e9;
+
+  --color-ramp1: #b7d3f6;
+  --color-ramp2: #86b6ef;
+  --color-ramp3: #5598e7;
+  --color-ramp4: #2a78d6;
+  --color-ramp5: #184f95;
+
+  --font-sans: system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, monospace;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--color-plane);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-plane);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-surface-3);
+  border-radius: 6px;
+}
+
+@keyframes bf-rise {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes bf-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.45;
+  }
+}
+@keyframes bf-sweep {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(300%);
+  }
+}
+@keyframes bf-strike {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+.bf-rise {
+  animation: bf-rise 260ms ease-out both;
+}
+.bf-pulse {
+  animation: bf-pulse 1.4s ease-in-out infinite;
+}
+.bf-sweep::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  width: 33%;
+  background: linear-gradient(90deg, transparent, rgba(57, 135, 229, 0.28), transparent);
+  animation: bf-sweep 1.5s linear infinite;
+}
+
+/* Rejections must read instantly, before anyone parses a number. */
+.bf-rejected {
+  filter: saturate(0.35);
+  opacity: 0.62;
+}
+.bf-rejected:hover {
+  filter: saturate(0.7);
+  opacity: 0.95;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bf-rise,
+  .bf-pulse,
+  .bf-sweep::after {
+    animation: none;
+  }
+}

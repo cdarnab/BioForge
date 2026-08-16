@@ -1,0 +1,897 @@
+{
+  "target": "VEGF-A",
+  "framework": {
+    "fr1": "QVQLVESGGGLVQAGGSLRLSCAAS",
+    "fr2": "MGWFRQAPGKEREFVA",
+    "fr3": "RFTISRDNAKNTVYLQMNSLKPEDTAVYYCAA",
+    "fr4": "WGQGTQVTVSS"
+  },
+  "generated_by": "scripts/build_fixtures.py",
+  "sequence_disclaimer": "These are synthetic VHH scaffold sequences with authored CDR loops. They are not real therapeutic sequences and the 'reference binder' entry is a surrogate, not a published anti-VEGF antibody sequence.",
+  "candidates": [
+    {
+      "id": "BF-001",
+      "name": "BF-001",
+      "sequence": "QVQLVESGGGLVQAGGSLRLSCAASGRTFSSYAMGWFRQAPGKEREFVAISWSGGSTRFTISRDNAKNTVYLQMNSLKPEDTAVYYCAAADRGYSSTWYDYWGQGTQVTVSS",
+      "format": "nanobody",
+      "parent_id": null,
+      "generation_note": "Reference-binder surrogate carrying a receptor-blocking-style paratope.",
+      "cdr_spans": {
+        "cdr1": [
+          25,
+          33
+        ],
+        "cdr2": [
+          49,
+          57
+        ],
+        "cdr3": [
+          89,
+          101
+        ]
+      },
+      "cdr": {
+        "cdr1": "GRTFSSYA",
+        "cdr2": "ISWSGGST",
+        "cdr3": "ADRGYSSTWYDY"
+      },
+      "epitope_contact_positions": [
+        91,
+        93,
+        95,
+        97
+      ],
+      "sequence_metrics": {
+        "surface_hydrophobicity": 0.4151,
+        "aggregation_propensity": 0.1689,
+        "net_charge_at_ph7": 2.0,
+        "unpaired_cysteines": 0.0,
+        "n_glyc_sequons": 0.0
+      },
+      "tamarind_metrics": {
+        "interface_confidence": 0.89,
+        "predicted_dg_kcal_mol": -11.4,
+        "predicted_tm_celsius": 74.5,
+        "immunogenicity_risk": 0.14
+      },
+      "model_hub_metrics": {
+        "model_agreement": 0.88,
+        "epitope_rmsd_angstrom": 1.2
+      },
+      "modal_metrics": {
+        "retained_score_across_mutations": 0.83,
+        "decoy_discrimination_margin": 0.41
+      },
+      "is_redesign": false
+    },
+    {
+      "id": "BF-002",
+      "name": "BF-002",
+      "sequence": "QVQLVESGGGLVQAGGSLRLSCAASGSTFNSSAMGWFRQAPGKEREFVAITSGGGTTRFTISRDNAKNTVYLQMNSLKPEDTAVYYCAAANRDYSGSYPDYWGQGTQVTVSS",
+      "format": "nanobody",
+      "parent_id": null,
+      "generation_note": "Loop-grafted variant with a shortened CDR3 apex.",
+      "cdr_spans": {
+        "cdr1": [
+          25,
+          33
+        ],
+        "cdr2": [
+          49,
+          57
+        ],
+        "cdr3": [
+          89,
+          101
+        ]
+      },
+      "cdr": {
+        "cdr1": "GSTFNSSA",
+        "cdr2": "ITSGGGTT",
+        "cdr3": "ANRDYSGSYPDY"
+      },
+      "epitope_contact_positions": [
+        91,
+        93,
+        95,
+        97
+      ],
+      "sequence_metrics": {
+        "surface_hydrophobicity": 0.4099,
+        "aggregation_propensity": 0.1956,
+        "net_charge_at_ph7": 1.0,
+        "unpaired_cysteines": 0.0,
+        "n_glyc_sequons": 1.0
+      },
+      "tamarind_metrics": {
+        "interface_confidence": 0.81,
+        "predicted_dg_kcal_mol": -10.2,
+        "predicted_tm_celsius": 71.0,
+        "immunogenicity_risk": 0.19
+      },
+      "model_hub_metrics": {
+        "model_agreement": 0.79,
+        "epitope_rmsd_angstrom": 1.8
+      },
+      "modal_metrics": {
+        "retained_score_across_mutations": 0.74,
+        "decoy_discrimination_margin": 0.32
+      },
+      "is_redesign": false
+    },
+    {
+      "id": "BF-003",
+      "name": "BF-003",
+      "sequence": "QVQLVESGGGLVQAGGSLRLSCAASGRTFSNYDMGWFRQAPGKEREFVAISSGGTTNRFTISRDNAKNTVYLQMNSLKPEDTAVYYCAAATRDYSNSWTDYWGQGTQVTVSS",
+      "format": "nanobody",
+      "parent_id": null,
+      "generation_note": "Design-path pose places CDR3 across the receptor-binding cleft.",
+      "cdr_spans": {
+        "cdr1": [
+          25,
+          33
+        ],
+        "cdr2": [
+          49,
+          57
+        ],
+        "cdr3": [
+          89,
+          101
+        ]
+      },
+      "cdr": {
+        "cdr1": "GRTFSNYD",
+        "cdr2": "ISSGGTTN",
+        "cdr3": "ATRDYSNSWTDY"
+      },
+      "epitope_contact_positions": [
+        91,
+        93,
+        95,
+        97
+      ],
+      "sequence_metrics": {
+        "surface_hydrophobicity": 0.3635,
+        "aggregation_propensity": 0.0933,
+        "net_charge_at_ph7": 1.0,
+        "unpaired_cysteines": 0.0,
+        "n_glyc_sequons": 0.0
+      },
+      "tamarind_metrics": {
+        "interface_confidence": 0.78,
+        "predicted_dg_kcal_mol": -9.6,
+        "predicted_tm_celsius": 69.2,
+        "immunogenicity_risk": 0.22
+      },
+      "model_hub_metrics": {
+        "model_agreement": 0.52,
+        "epitope_rmsd_angstrom": 5.6
+      },
+      "modal_metrics": null,
+      "is_redesign": false
+    },
+    {
+      "id": "BF-004",
+      "name": "BF-004",
+      "sequence": "QVQLVESGGGLVQAGGSLRLSCAASGRSFSTYSMGWFRQAPGKEREFVAINSGGDTTRFTISRDNAKNTVYLQMNSLKPEDTAVYYCAAAKRDYSTSWNDYWGQGTQVTVSS",
+      "format": "nanobody",
+      "parent_id": null,
+      "generation_note": "Charge-complementary paratope with a single dominant contact residue.",
+      "cdr_spans": {
+        "cdr1": [
+          25,
+          33
+        ],
+        "cdr2": [
+          49,
+          57
+        ],
+        "cdr3": [
+          89,
+          101
+        ]
+      },
+      "cdr": {
+        "cdr1": "GRSFSTYS",
+        "cdr2": "INSGGDTT",
+        "cdr3": "AKRDYSTSWNDY"
+      },
+      "epitope_contact_positions": [
+        91,
+        93,
+        95,
+        97
+      ],
+      "sequence_metrics": {
+        "surface_hydrophobicity": 0.3615,
+        "aggregation_propensity": 0.04,
+        "net_charge_at_ph7": 2.0,
+        "unpaired_cysteines": 0.0,
+        "n_glyc_sequons": 0.0
+      },
+      "tamarind_metrics": {
+        "interface_confidence": 0.76,
+        "predicted_dg_kcal_mol": -9.1,
+        "predicted_tm_celsius": 68.4,
+        "immunogenicity_risk": 0.24
+      },
+      "model_hub_metrics": {
+        "model_agreement": 0.71,
+        "epitope_rmsd_angstrom": 2.4
+      },
+      "modal_metrics": {
+        "retained_score_across_mutations": 0.41,
+        "decoy_discrimination_margin": 0.22
+      },
+      "is_redesign": false
+    },
+    {
+      "id": "BF-005",
+      "name": "BF-005",
+      "sequence": "QVQLVESGGGLVQAGGSLRLSCAASGSTFSNSDMGWFRQAPGKEREFVAITSSGSTNRFTISRDNAKNTVYLQMNSLKPEDTAVYYCAAANSDYSGSTQDNWGQGTQVTVSS",
+      "format": "nanobody",
+      "parent_id": null,
+      "generation_note": "Short, polar CDR3; predicted contact area is small.",
+      "cdr_spans": {
+        "cdr1": [
+          25,
+          33
+        ],
+        "cdr2": [
+          49,
+          57
+        ],
+        "cdr3": [
+          89,
+          101
+        ]
+      },
+      "cdr": {
+        "cdr1": "GSTFSNSD",
+        "cdr2": "ITSSGSTN",
+        "cdr3": "ANSDYSGSTQDN"
+      },
+      "epitope_contact_positions": [
+        91,
+        93,
+        95,
+        97
+      ],
+      "sequence_metrics": {
+        "surface_hydrophobicity": 0.3754,
+        "aggregation_propensity": 0.08,
+        "net_charge_at_ph7": -1.0,
+        "unpaired_cysteines": 0.0,
+        "n_glyc_sequons": 0.0
+      },
+      "tamarind_metrics": {
+        "interface_confidence": 0.55,
+        "predicted_dg_kcal_mol": -6.2,
+        "predicted_tm_celsius": 66.0,
+        "immunogenicity_risk": 0.27
+      },
+      "model_hub_metrics": null,
+      "modal_metrics": null,
+      "is_redesign": false
+    },
+    {
+      "id": "BF-006",
+      "name": "BF-006",
+      "sequence": "QVQLVESGGGLVQAGGSLRLSCAASGRIFVLYAMGWFRQAPGKEREFVAILWLGGVIRFTISRDNAKNTVYLQMNSLKPEDTAVYYCAAAAILVLWFPIVYWGQGTQVTVSS",
+      "format": "nanobody",
+      "parent_id": null,
+      "generation_note": "Hydrophobic paratope variant explored for buried-surface gain.",
+      "cdr_spans": {
+        "cdr1": [
+          25,
+          33
+        ],
+        "cdr2": [
+          49,
+          57
+        ],
+        "cdr3": [
+          89,
+          101
+        ]
+      },
+      "cdr": {
+        "cdr1": "GRIFVLYA",
+        "cdr2": "ILWLGGVI",
+        "cdr3": "AAILVLWFPIVY"
+      },
+      "epitope_contact_positions": [
+        91,
+        93,
+        95,
+        97
+      ],
+      "sequence_metrics": {
+        "surface_hydrophobicity": 0.7286,
+        "aggregation_propensity": 0.8044,
+        "net_charge_at_ph7": 3.0,
+        "unpaired_cysteines": 0.0,
+        "n_glyc_sequons": 0.0
+      },
+      "tamarind_metrics": {
+        "interface_confidence": 0.74,
+        "predicted_dg_kcal_mol": -8.9,
+        "predicted_tm_celsius": 63.1,
+        "immunogenicity_risk": 0.31
+      },
+      "model_hub_metrics": {
+        "model_agreement": 0.68,
+        "epitope_rmsd_angstrom": 2.9
+      },
+      "modal_metrics": null,
+      "is_redesign": false
+    },
+    {
+      "id": "BF-007",
+      "name": "BF-007",
+      "sequence": "QVQLVESGGGLVQAGGSLRLSCAASGRTFSTYDMGWFRQAPGKEREFVAINSGGSRTRFTISRDNAKNTVYLQMNSLKPEDTAVYYCAAAADSGYNTWSEYWGQGTQVTVSS",
+      "format": "nanobody",
+      "parent_id": null,
+      "generation_note": "Framework-stabilised variant with an extended CDR2 contact.",
+      "cdr_spans": {
+        "cdr1": [
+          25,
+          33
+        ],
+        "cdr2": [
+          49,
+          57
+        ],
+        "cdr3": [
+          89,
+          101
+        ]
+      },
+      "cdr": {
+        "cdr1": "GRTFSTYD",
+        "cdr2": "INSGGSRT",
+        "cdr3": "AADSGYNTWSEY"
+      },
+      "epitope_contact_positions": [
+        91,
+        93,
+        95,
+        97
+      ],
+      "sequence_metrics": {
+        "surface_hydrophobicity": 0.3857,
+        "aggregation_propensity": 0.0,
+        "net_charge_at_ph7": 1.0,
+        "unpaired_cysteines": 0.0,
+        "n_glyc_sequons": 0.0
+      },
+      "tamarind_metrics": {
+        "interface_confidence": 0.77,
+        "predicted_dg_kcal_mol": -9.8,
+        "predicted_tm_celsius": 72.3,
+        "immunogenicity_risk": 0.17
+      },
+      "model_hub_metrics": {
+        "model_agreement": 0.75,
+        "epitope_rmsd_angstrom": 2.1
+      },
+      "modal_metrics": {
+        "retained_score_across_mutations": 0.69,
+        "decoy_discrimination_margin": 0.28
+      },
+      "is_redesign": false
+    },
+    {
+      "id": "BF-008",
+      "name": "BF-008",
+      "sequence": "QVQLVESGGGLVQAGGSLRLSCAASGSTFSSNDMGWFRQAPGKEREFVAITWSGSTTRFTISRDNAKNTVYLQMNSLKPEDTAVYYCAAATRDGSNSWQDYWGQGTQVTVSS",
+      "format": "nanobody",
+      "parent_id": null,
+      "generation_note": "Alternate CDR3 register; two models place the loop differently.",
+      "cdr_spans": {
+        "cdr1": [
+          25,
+          33
+        ],
+        "cdr2": [
+          49,
+          57
+        ],
+        "cdr3": [
+          89,
+          101
+        ]
+      },
+      "cdr": {
+        "cdr1": "GSTFSSND",
+        "cdr2": "ITWSGSTT",
+        "cdr3": "ATRDGSNSWQDY"
+      },
+      "epitope_contact_positions": [
+        91,
+        93,
+        95,
+        97
+      ],
+      "sequence_metrics": {
+        "surface_hydrophobicity": 0.3817,
+        "aggregation_propensity": 0.0756,
+        "net_charge_at_ph7": 0.0,
+        "unpaired_cysteines": 0.0,
+        "n_glyc_sequons": 0.0
+      },
+      "tamarind_metrics": {
+        "interface_confidence": 0.72,
+        "predicted_dg_kcal_mol": -8.4,
+        "predicted_tm_celsius": 67.5,
+        "immunogenicity_risk": 0.25
+      },
+      "model_hub_metrics": {
+        "model_agreement": 0.51,
+        "epitope_rmsd_angstrom": 3.4
+      },
+      "modal_metrics": null,
+      "is_redesign": false
+    },
+    {
+      "id": "BF-009",
+      "name": "BF-009",
+      "sequence": "QVQLVESGGGLVQAGGSLRLSCAASGSSFSNTDMGWFRQAPGKEREFVAISSSGDTNRFTISRDNAKNTVYLQMNSLKPEDTAVYYCAAANQDGSGSTQDSWGQGTQVTVSS",
+      "format": "nanobody",
+      "parent_id": null,
+      "generation_note": "Highly polar paratope; predicted interface is diffuse.",
+      "cdr_spans": {
+        "cdr1": [
+          25,
+          33
+        ],
+        "cdr2": [
+          49,
+          57
+        ],
+        "cdr3": [
+          89,
+          101
+        ]
+      },
+      "cdr": {
+        "cdr1": "GSSFSNTD",
+        "cdr2": "ISSSGDTN",
+        "cdr3": "ANQDGSGSTQDS"
+      },
+      "epitope_contact_positions": [
+        91,
+        93,
+        95,
+        97
+      ],
+      "sequence_metrics": {
+        "surface_hydrophobicity": 0.3679,
+        "aggregation_propensity": 0.0756,
+        "net_charge_at_ph7": -2.0,
+        "unpaired_cysteines": 0.0,
+        "n_glyc_sequons": 0.0
+      },
+      "tamarind_metrics": {
+        "interface_confidence": 0.49,
+        "predicted_dg_kcal_mol": -5.1,
+        "predicted_tm_celsius": 64.8,
+        "immunogenicity_risk": 0.29
+      },
+      "model_hub_metrics": null,
+      "modal_metrics": null,
+      "is_redesign": false
+    },
+    {
+      "id": "BF-010",
+      "name": "BF-010",
+      "sequence": "QVQLVESGGGLVQAGGSLRLSCAASGRTFSSYDMGWFRQAPGKEREFVAISSGGSTTRFTISRDNAKNTVYLQMNSLKPEDTAVYYCAAAARDGYSSWTDYWGQGTQVTVSS",
+      "format": "nanobody",
+      "parent_id": null,
+      "generation_note": "Strong predicted affinity but a generic, non-selective paratope.",
+      "cdr_spans": {
+        "cdr1": [
+          25,
+          33
+        ],
+        "cdr2": [
+          49,
+          57
+        ],
+        "cdr3": [
+          89,
+          101
+        ]
+      },
+      "cdr": {
+        "cdr1": "GRTFSSYD",
+        "cdr2": "ISSGGSTT",
+        "cdr3": "AARDGYSSWTDY"
+      },
+      "epitope_contact_positions": [
+        91,
+        93,
+        95,
+        97
+      ],
+      "sequence_metrics": {
+        "surface_hydrophobicity": 0.4071,
+        "aggregation_propensity": 0.0933,
+        "net_charge_at_ph7": 1.0,
+        "unpaired_cysteines": 0.0,
+        "n_glyc_sequons": 0.0
+      },
+      "tamarind_metrics": {
+        "interface_confidence": 0.8,
+        "predicted_dg_kcal_mol": -10.0,
+        "predicted_tm_celsius": 70.1,
+        "immunogenicity_risk": 0.2
+      },
+      "model_hub_metrics": {
+        "model_agreement": 0.73,
+        "epitope_rmsd_angstrom": 2.2
+      },
+      "modal_metrics": {
+        "retained_score_across_mutations": 0.62,
+        "decoy_discrimination_margin": 0.09
+      },
+      "is_redesign": false
+    },
+    {
+      "id": "BF-011",
+      "name": "BF-011",
+      "sequence": "QVQLVESGGGLVQAGGSLRLSCAASGRTFSLYDMGWFRQAPGKEREFVAISWSGGSTRFTISRDNAKNTVYLQMNSLKPEDTAVYYCAAAAIRGYLSDSDYWGQGTQVTVSS",
+      "format": "nanobody",
+      "parent_id": null,
+      "generation_note": "Strong predicted binder carrying a hydrophobic CDR3 apex.",
+      "cdr_spans": {
+        "cdr1": [
+          25,
+          33
+        ],
+        "cdr2": [
+          49,
+          57
+        ],
+        "cdr3": [
+          89,
+          101
+        ]
+      },
+      "cdr": {
+        "cdr1": "GRTFSLYD",
+        "cdr2": "ISWSGGST",
+        "cdr3": "AAIRGYLSDSDY"
+      },
+      "epitope_contact_positions": [
+        91,
+        93,
+        95,
+        97
+      ],
+      "sequence_metrics": {
+        "surface_hydrophobicity": 0.4639,
+        "aggregation_propensity": 0.2933,
+        "net_charge_at_ph7": 1.0,
+        "unpaired_cysteines": 0.0,
+        "n_glyc_sequons": 0.0
+      },
+      "tamarind_metrics": {
+        "interface_confidence": 0.79,
+        "predicted_dg_kcal_mol": -9.9,
+        "predicted_tm_celsius": 70.8,
+        "immunogenicity_risk": 0.37
+      },
+      "model_hub_metrics": {
+        "model_agreement": 0.76,
+        "epitope_rmsd_angstrom": 2.0
+      },
+      "modal_metrics": null,
+      "is_redesign": false
+    },
+    {
+      "id": "BF-012",
+      "name": "BF-012",
+      "sequence": "QVQLVESGGGLVQAGGSLRLSCAASGSTFSNYSMGWFRQAPGKEREFVAITSGGSTNRFTISRDNAKNTVYLQMNSLKPEDTAVYYCAAANRDYSNSTQDYWGQGTQVTVSS",
+      "format": "nanobody",
+      "parent_id": null,
+      "generation_note": "Truncated contact surface; predicted engagement is marginal.",
+      "cdr_spans": {
+        "cdr1": [
+          25,
+          33
+        ],
+        "cdr2": [
+          49,
+          57
+        ],
+        "cdr3": [
+          89,
+          101
+        ]
+      },
+      "cdr": {
+        "cdr1": "GSTFSNYS",
+        "cdr2": "ITSGGSTN",
+        "cdr3": "ANRDYSNSTQDY"
+      },
+      "epitope_contact_positions": [
+        91,
+        93,
+        95,
+        97
+      ],
+      "sequence_metrics": {
+        "surface_hydrophobicity": 0.3675,
+        "aggregation_propensity": 0.0978,
+        "net_charge_at_ph7": 1.0,
+        "unpaired_cysteines": 0.0,
+        "n_glyc_sequons": 2.0
+      },
+      "tamarind_metrics": {
+        "interface_confidence": 0.57,
+        "predicted_dg_kcal_mol": -6.9,
+        "predicted_tm_celsius": 65.4,
+        "immunogenicity_risk": 0.26
+      },
+      "model_hub_metrics": null,
+      "modal_metrics": null,
+      "is_redesign": false
+    },
+    {
+      "id": "BF-013",
+      "name": "BF-013",
+      "sequence": "QVQLVESGGGLVQAGGSLRLSCAASGRTFSSNDMGWFRQAPGKEREFVAISSGGNTTRFTISRDNAKNTVYLQMNSLKPEDTAVYYCAAATRDYSGSWNDYWGQGTQVTVSS",
+      "format": "nanobody",
+      "parent_id": null,
+      "generation_note": "Models agree on contacts but disagree on loop backbone placement.",
+      "cdr_spans": {
+        "cdr1": [
+          25,
+          33
+        ],
+        "cdr2": [
+          49,
+          57
+        ],
+        "cdr3": [
+          89,
+          101
+        ]
+      },
+      "cdr": {
+        "cdr1": "GRTFSSND",
+        "cdr2": "ISSGGNTT",
+        "cdr3": "ATRDYSGSWNDY"
+      },
+      "epitope_contact_positions": [
+        91,
+        93,
+        95,
+        97
+      ],
+      "sequence_metrics": {
+        "surface_hydrophobicity": 0.3667,
+        "aggregation_propensity": 0.0933,
+        "net_charge_at_ph7": 1.0,
+        "unpaired_cysteines": 0.0,
+        "n_glyc_sequons": 1.0
+      },
+      "tamarind_metrics": {
+        "interface_confidence": 0.7,
+        "predicted_dg_kcal_mol": -8.1,
+        "predicted_tm_celsius": 66.9,
+        "immunogenicity_risk": 0.28
+      },
+      "model_hub_metrics": {
+        "model_agreement": 0.61,
+        "epitope_rmsd_angstrom": 4.7
+      },
+      "modal_metrics": null,
+      "is_redesign": false
+    },
+    {
+      "id": "BF-014",
+      "name": "BF-014",
+      "sequence": "QVQLVESGGGLVQAGGSLRLSCAASGRTFSDYDMGWFRQAPGKEREFVAIDSGGRTSRFTISRDNAKNTVYLQMNSLKPEDTAVYYCAAAKDSGYQTRPDYWGQGTQVTVSS",
+      "format": "nanobody",
+      "parent_id": null,
+      "generation_note": "Unrelated-antigen binder carried through the pipeline unlabelled.",
+      "cdr_spans": {
+        "cdr1": [
+          25,
+          33
+        ],
+        "cdr2": [
+          49,
+          57
+        ],
+        "cdr3": [
+          89,
+          101
+        ]
+      },
+      "cdr": {
+        "cdr1": "GRTFSDYD",
+        "cdr2": "IDSGGRTS",
+        "cdr3": "AKDSGYQTRPDY"
+      },
+      "epitope_contact_positions": [
+        91,
+        93,
+        95,
+        97
+      ],
+      "sequence_metrics": {
+        "surface_hydrophobicity": 0.3345,
+        "aggregation_propensity": 0.0,
+        "net_charge_at_ph7": 1.0,
+        "unpaired_cysteines": 0.0,
+        "n_glyc_sequons": 0.0
+      },
+      "tamarind_metrics": {
+        "interface_confidence": 0.31,
+        "predicted_dg_kcal_mol": -3.2,
+        "predicted_tm_celsius": 73.0,
+        "immunogenicity_risk": 0.15
+      },
+      "model_hub_metrics": null,
+      "modal_metrics": null,
+      "is_redesign": false
+    },
+    {
+      "id": "BF-015",
+      "name": "BF-015",
+      "sequence": "QVQLVESGGGLVQAGGSLRLSCAASYSAGSFRTMGWFRQAPGKEREFVAGSTSGSITRFTISRDNAKNTVYLQMNSLKPEDTAVYYCAAYSDSRYGATWDAWGQGTQVTVSS",
+      "format": "nanobody",
+      "parent_id": null,
+      "generation_note": "CDR residues shuffled within each loop; composition preserved.",
+      "cdr_spans": {
+        "cdr1": [
+          25,
+          33
+        ],
+        "cdr2": [
+          49,
+          57
+        ],
+        "cdr3": [
+          89,
+          101
+        ]
+      },
+      "cdr": {
+        "cdr1": "YSAGSFRT",
+        "cdr2": "GSTSGSIT",
+        "cdr3": "YSDSRYGATWDA"
+      },
+      "epitope_contact_positions": [
+        91,
+        93,
+        95,
+        97
+      ],
+      "sequence_metrics": {
+        "surface_hydrophobicity": 0.4282,
+        "aggregation_propensity": 0.1156,
+        "net_charge_at_ph7": 2.0,
+        "unpaired_cysteines": 0.0,
+        "n_glyc_sequons": 0.0
+      },
+      "tamarind_metrics": {
+        "interface_confidence": 0.38,
+        "predicted_dg_kcal_mol": -4.0,
+        "predicted_tm_celsius": 62.5,
+        "immunogenicity_risk": 0.3
+      },
+      "model_hub_metrics": null,
+      "modal_metrics": null,
+      "is_redesign": false
+    },
+    {
+      "id": "BF-016",
+      "name": "BF-016",
+      "sequence": "QVQLVESGGGLVQAGGSLRLSCAASGRTFSSYAMGWFRQAPGKEREFVAISWSGGSTRFTISRDNAKNTVYLQMNSLKPEDTAVYYCAAADRGASSTGYDYWGQGTQVTVSS",
+      "format": "nanobody",
+      "parent_id": null,
+      "generation_note": "Two predicted interface contacts substituted to alanine and glycine.",
+      "cdr_spans": {
+        "cdr1": [
+          25,
+          33
+        ],
+        "cdr2": [
+          49,
+          57
+        ],
+        "cdr3": [
+          89,
+          101
+        ]
+      },
+      "cdr": {
+        "cdr1": "GRTFSSYA",
+        "cdr2": "ISWSGGST",
+        "cdr3": "ADRGASSTGYDY"
+      },
+      "epitope_contact_positions": [
+        91,
+        93,
+        95,
+        97
+      ],
+      "sequence_metrics": {
+        "surface_hydrophobicity": 0.4294,
+        "aggregation_propensity": 0.1689,
+        "net_charge_at_ph7": 2.0,
+        "unpaired_cysteines": 0.0,
+        "n_glyc_sequons": 0.0
+      },
+      "tamarind_metrics": {
+        "interface_confidence": 0.52,
+        "predicted_dg_kcal_mol": -5.8,
+        "predicted_tm_celsius": 74.1,
+        "immunogenicity_risk": 0.14
+      },
+      "model_hub_metrics": null,
+      "modal_metrics": null,
+      "is_redesign": false
+    }
+  ],
+  "redesign": {
+    "id": "BF-017",
+    "name": "BF-017",
+    "sequence": "QVQLVESGGGLVQAGGSLRLSCAASGRTFSSYDMGWFRQAPGKEREFVAISWSGGSTRFTISRDNAKNTVYLQMNSLKPEDTAVYYCAASASRGYNSWSEYWGQGTQVTVSS",
+    "format": "nanobody",
+    "parent_id": "BF-011",
+    "generation_note": "Redesign of BF-011. Three hydrophobic CDR apex residues (L, W, L) were substituted with polar residues (N, S, E) to break the aggregation-prone patch, and the CDR1/CDR2 loops were reverted to the framework-consensus loops. Predicted affinity was allowed to degrade in exchange.",
+    "cdr_spans": {
+      "cdr1": [
+        25,
+        33
+      ],
+      "cdr2": [
+        49,
+        57
+      ],
+      "cdr3": [
+        89,
+        101
+      ]
+    },
+    "cdr": {
+      "cdr1": "GRTFSSYD",
+      "cdr2": "ISWSGGST",
+      "cdr3": "SASRGYNSWSEY"
+    },
+    "epitope_contact_positions": [
+      91,
+      93,
+      95,
+      97
+    ],
+    "sequence_metrics": {
+      "surface_hydrophobicity": 0.3956,
+      "aggregation_propensity": 0.0711,
+      "net_charge_at_ph7": 2.0,
+      "unpaired_cysteines": 0.0,
+      "n_glyc_sequons": 0.0
+    },
+    "tamarind_metrics": {
+      "interface_confidence": 0.78,
+      "predicted_dg_kcal_mol": -9.5,
+      "predicted_tm_celsius": 69.4,
+      "immunogenicity_risk": 0.28
+    },
+    "model_hub_metrics": {
+      "model_agreement": 0.74,
+      "epitope_rmsd_angstrom": 2.3
+    },
+    "modal_metrics": {
+      "retained_score_across_mutations": 0.72,
+      "decoy_discrimination_margin": 0.33
+    },
+    "is_redesign": true
+  }
+}

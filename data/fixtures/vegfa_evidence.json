@@ -1,0 +1,150 @@
+{
+  "_note": "Curated fixture evidence for the seeded VEGF-A demo. The citations point at real public records (UniProt, RCSB PDB, Drugs@FDA, ClinicalTrials.gov). They were assembled by hand for the demo, NOT retrieved by a live Paperclip call — every item's provenance records mode='fixture' and the UI labels it. Nothing here is a model-generated claim.",
+  "retrieved_at": "2026-08-15T00:00:00Z",
+  "items": [
+    {
+      "claim": "VEGF-A (UniProt P15692) is a secreted, disulfide-linked homodimeric growth factor with a cystine-knot fold; the mature signalling unit is the dimer, not the monomer.",
+      "source_type": "database",
+      "source_title": "UniProtKB - P15692 (VEGFA_HUMAN)",
+      "source_url": "https://www.uniprot.org/uniprotkb/P15692/entry",
+      "citation_locator": "P15692, Function and Subunit structure sections",
+      "support": "context_only",
+      "evidence_level": "annotated",
+      "relevance": 0.95,
+      "confidence": 0.95,
+      "tool": "paperclip"
+    },
+    {
+      "claim": "The VEGFR-binding determinants sit at the two poles of the VEGF-A dimer and are formed by residues contributed by both protomers, so a binder targeting that region engages a composite surface rather than a single chain.",
+      "source_type": "paper",
+      "source_title": "Wiesmann et al., Crystal structure at 1.7 A resolution of VEGF in complex with domain 2 of the Flt-1 receptor (Cell, 1997)",
+      "source_url": "https://www.rcsb.org/structure/1FLT",
+      "citation_locator": "PDB 1FLT, receptor-binding interface",
+      "support": "supports",
+      "evidence_level": "observed",
+      "relevance": 0.94,
+      "confidence": 0.9,
+      "tool": "paperclip"
+    },
+    {
+      "claim": "A neutralising antibody Fab has been co-crystallised with VEGF-A, giving an experimentally determined blocking epitope that overlaps the receptor-binding region.",
+      "source_type": "paper",
+      "source_title": "Muller et al., VEGF and the Fab fragment of a humanized neutralizing antibody: crystal structure of the complex and mutational analysis of the interface (Structure, 1998)",
+      "source_url": "https://www.rcsb.org/structure/1BJ1",
+      "citation_locator": "PDB 1BJ1, 2.4 A resolution",
+      "support": "supports",
+      "evidence_level": "observed",
+      "relevance": 0.97,
+      "confidence": 0.93,
+      "tool": "paperclip"
+    },
+    {
+      "claim": "VEGF-A is alternatively spliced into isoforms of differing length (commonly VEGF121, VEGF165, VEGF189). The heparin-binding exon 6/7 material is absent from VEGF121.",
+      "source_type": "database",
+      "source_title": "UniProtKB - P15692, Alternative products",
+      "source_url": "https://www.uniprot.org/uniprotkb/P15692/entry#sequences",
+      "citation_locator": "P15692 isoform table",
+      "support": "contradicts",
+      "evidence_level": "annotated",
+      "relevance": 0.9,
+      "confidence": 0.92,
+      "tool": "paperclip"
+    },
+    {
+      "claim": "Anti-VEGF-A blockade is a clinically validated mechanism: bevacizumab (full-length IgG) and ranibizumab (Fab) are both approved and both act by sequestering VEGF-A.",
+      "source_type": "regulatory",
+      "source_title": "Drugs@FDA approved product records for bevacizumab and ranibizumab",
+      "source_url": "https://www.accessdata.fda.gov/scripts/cder/daf/",
+      "citation_locator": "Drugs@FDA, search 'bevacizumab' and 'ranibizumab'",
+      "support": "supports",
+      "evidence_level": "reported",
+      "relevance": 0.88,
+      "confidence": 0.9,
+      "tool": "paperclip"
+    },
+    {
+      "claim": "The FDA withdrew the metastatic breast cancer indication for bevacizumab in 2011 after confirmatory trials failed to show a survival benefit. Target engagement is not the same thing as clinical benefit, and this target has a documented history of the two coming apart.",
+      "source_type": "regulatory",
+      "source_title": "FDA decision withdrawing the metastatic breast cancer indication for bevacizumab (2011)",
+      "source_url": "https://www.accessdata.fda.gov/scripts/cder/daf/",
+      "citation_locator": "Drugs@FDA, bevacizumab regulatory history",
+      "support": "contradicts",
+      "evidence_level": "reported",
+      "relevance": 0.86,
+      "confidence": 0.88,
+      "tool": "paperclip"
+    },
+    {
+      "claim": "Single-domain VHH (nanobody) therapeutics are a viable clinical format; caplacizumab was approved as the first nanobody-based medicine.",
+      "source_type": "regulatory",
+      "source_title": "Drugs@FDA approved product record for caplacizumab",
+      "source_url": "https://www.accessdata.fda.gov/scripts/cder/daf/",
+      "citation_locator": "Drugs@FDA, search 'caplacizumab'",
+      "support": "supports",
+      "evidence_level": "reported",
+      "relevance": 0.82,
+      "confidence": 0.87,
+      "tool": "paperclip"
+    },
+    {
+      "claim": "Anti-VEGF agents remain under active clinical investigation across ophthalmology and oncology, indicating a live competitive landscape rather than an unexplored target.",
+      "source_type": "trial",
+      "source_title": "ClinicalTrials.gov registered studies for VEGF-A-directed agents",
+      "source_url": "https://clinicaltrials.gov/search?intr=VEGF",
+      "citation_locator": "ClinicalTrials.gov intervention search 'VEGF'",
+      "support": "context_only",
+      "evidence_level": "reported",
+      "relevance": 0.7,
+      "confidence": 0.8,
+      "tool": "paperclip"
+    },
+    {
+      "claim": "The VEGF-A monomer carries an intrachain cystine knot plus two inter-chain disulfides. Engineered binders that introduce free cysteines risk scrambling with this system during expression.",
+      "source_type": "database",
+      "source_title": "UniProtKB - P15692, Disulfide bond annotations",
+      "source_url": "https://www.uniprot.org/uniprotkb/P15692/entry#ptm_processing",
+      "citation_locator": "P15692 PTM/Processing",
+      "support": "context_only",
+      "evidence_level": "annotated",
+      "relevance": 0.78,
+      "confidence": 0.85,
+      "tool": "paperclip"
+    },
+    {
+      "claim": "VEGF family members PlGF, VEGF-B, VEGF-C and VEGF-D share the cystine-knot fold with VEGF-A, so cross-reactivity against family members is a real selectivity risk for a new binder.",
+      "source_type": "database",
+      "source_title": "UniProtKB family and domain annotations for the PDGF/VEGF growth factor family",
+      "source_url": "https://www.uniprot.org/uniprotkb/P15692/entry#family_and_domains",
+      "citation_locator": "P15692 Family & Domains",
+      "support": "contradicts",
+      "evidence_level": "annotated",
+      "relevance": 0.84,
+      "confidence": 0.86,
+      "tool": "paperclip"
+    },
+    {
+      "claim": "Public co-structures of VEGF-A with both a receptor domain and a neutralising Fab give two independent experimental reference frames for scoring a predicted epitope.",
+      "source_type": "database",
+      "source_title": "RCSB PDB entries 1FLT and 1BJ1",
+      "source_url": "https://www.rcsb.org/structure/1BJ1",
+      "citation_locator": "PDB 1FLT; PDB 1BJ1",
+      "support": "supports",
+      "evidence_level": "observed",
+      "relevance": 0.91,
+      "confidence": 0.92,
+      "tool": "paperclip"
+    },
+    {
+      "claim": "No experimental binding, expression, or stability data exists for any candidate in this run. Every candidate-level number in this investigation is a computational prediction.",
+      "source_type": "analysis",
+      "source_title": "BioForge Judge run scope",
+      "source_url": null,
+      "citation_locator": "This investigation",
+      "support": "contradicts",
+      "evidence_level": "predicted",
+      "relevance": 1.0,
+      "confidence": 1.0,
+      "tool": "bioforge"
+    }
+  ]
+}

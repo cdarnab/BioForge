@@ -168,16 +168,17 @@ returning `(payload, Provenance)`.
 | Adapter | Live path | Without credentials |
 |---|---|---|
 | `anthropic` | official `anthropic` SDK, structured outputs | deterministic templates over the same inputs |
-| `paperclip` | HTTP POST to an operator-supplied `PAPERCLIP_API_URL` | curated fixture bundle with real public citations |
+| `paperclip` | official `paperclip` CLI (`search`, `results --save`, protein VFS) | curated fixture bundle with real public citations |
 | `biomni` | none claimed | **import handoff**: emits a task prompt, parses the export |
 | `tamarind` | HTTP to an operator-supplied `TAMARIND_API_URL` | fixture predictions + genuinely computed sequence metrics |
 | `benchling_model_hub` | HTTP, with a same-family independence check | fixture comparison |
 | `modal` | deployed `services/modal_validator` endpoint | mutation set enumerated in-process, scores from fixture |
 | `benchling` | `benchling-sdk`, blocked behind human approval | prepares records, writes nothing outside the local store |
 
-No vendor base URL is hard-coded for Paperclip or Tamarind, and no request schema
-is invented for them. If your team was issued an endpoint, point the adapter at
-it; provenance then reads *operator-configured endpoint* rather than claiming a
+Paperclip integrates through its official CLI — there is no HTTP adapter and no
+invented endpoint. Tamarind has no hard-coded base URL and no guessed request
+schema; if your team was issued an endpoint, point the adapter at it and
+provenance reads *operator-configured endpoint* rather than claiming a
 vendor-documented integration.
 
 ## Benchling write path

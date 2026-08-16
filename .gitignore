@@ -21,3 +21,4 @@ data/imports/*
 dist/
 build/
 web/tsconfig.tsbuildinfo
+data/cache/

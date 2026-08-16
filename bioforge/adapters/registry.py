@@ -51,4 +51,20 @@ class AdapterRegistry:
         ]
 
     def statuses(self) -> list[IntegrationStatus]:
+        """Cheap, synchronous snapshot. Never performs I/O."""
         return [adapter.status() for adapter in self.all()]
+
+    async def refresh_statuses(self) -> list[IntegrationStatus]:
+        """Re-probe adapters that can actually check their own connectivity.
+
+        Separate from `statuses()` because probing shells out or hits a network,
+        and `statuses()` is read on the request path.
+        """
+        import asyncio
+
+        probes = [
+            adapter.refresh_status() for adapter in self.all() if hasattr(adapter, "refresh_status")
+        ]
+        if probes:
+            await asyncio.gather(*probes, return_exceptions=True)
+        return self.statuses()

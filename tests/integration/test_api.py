@@ -12,10 +12,12 @@ from fastapi.testclient import TestClient
 def client(tmp_path, monkeypatch):
     monkeypatch.setenv("DATABASE_URL", f"sqlite:///{tmp_path / 'api.db'}")
     monkeypatch.setenv("DEMO_PACE_MS", "0")
+    # The Paperclip CLI may be installed on this machine; the API tests must be
+    # hermetic, so turn it off explicitly.
+    monkeypatch.setenv("PAPERCLIP_ENABLED", "false")
     for key in (
         "ANTHROPIC_API_KEY",
         "PAPERCLIP_API_KEY",
-        "PAPERCLIP_API_URL",
         "TAMARIND_API_KEY",
         "TAMARIND_API_URL",
         "BENCHLING_TENANT",
@@ -63,6 +65,12 @@ def test_health_reports_integration_modes(client):
         "modal",
         "benchling",
     }
+
+
+def test_integrations_refresh_reprobes_adapters(client):
+    body = client.get("/api/integrations?refresh=true").json()
+    assert isinstance(body, list)
+    assert any(item["name"] == "paperclip" for item in body)
 
 
 def test_policy_endpoint_exposes_thresholds_and_calibration(client):
